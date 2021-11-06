@@ -1,3 +1,12 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+
+    $sql="SELECT *  FROM usuarios";
+    $query=mysqli_query($con,$sql);
+
+    $row=mysqli_fetch_array($query);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +20,6 @@
         
     </head>
     <body>
-        
         <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  id="miVideo">
             <source src="multimedia/GuitarraFondo.mp4" type="video/mp4">
         
@@ -108,10 +116,13 @@
                         <a class="nav-link" href="QuienSoy.html">¿Quien soy?</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="login.html">Iniciar sesión</a>
+                        <a class="nav-link" href="login.php">Iniciar sesión</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="Comentarios.html">Dejar un comentario</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="UsuariosR.php">Comunidad</a>
                       </li>
                     </ul>
                   </div>
@@ -120,83 +131,119 @@
   
 
         </header>
-    
- 
-        <main>
- 
+        
+    <main>
+     
 
-            <section id="login">
-                <div class="container-lg">
-                    <h2> Iniciar Sesión</h2>
-                    <form action="">
-                        <input  class="Entradas" placeholder="Usuario" id="Usuario" type="text" name="Usuario">
-    
- 
-                        <input class="Entradas" placeholder="Contraseña" type="password" name="Pass">
-    
-                        
-                        <input  class="Botones" id="Enviar" type="submit"  value="Iniciar sesión" />
-                        <p>¿No tienes una cuenta?<a href="registro.html"> Registrate</a></p>
-    
-                    </form>
-                </div>
-               
+
+        </section>
+    <section class="container"id="Registro">
+        <div class="contenedor">
+            <form action="insertar.php" method="post"  id="Formulario2">
+                <h2>Crear cuenta nueva</h2>
+                <input  class="Entradas" placeholder="Nombres" id="Nombre" type="text" name="nombre">
+                <br>
+                <br>
                 
+                <input class="Entradas" placeholder="Apellidos" id="Apellidos" type="text" name="apellidos">
+                <br>
+                <br>
+  
+                <input  class="Entradas" placeholder="RUT/DNI" id="Usuario" type="text" name="rut">
+                <br>
+                <br>
+                <input  class="Entradas" placeholder="Correo Electronico" type="email" name="email">
+                <br>
+                <br>
+                <input class="Entradas" placeholder="Contraseña" type="password" name="contraseña">
+                <br>
+                <br>
+                <input class="Entradas"  type="text" name="direccion" placeholder="Dirección">
+                <br>
+                <br>
+
  
-            </section>
+                <input id="FechaNacimiento" type="date" value="FechaN" name="fecha_nac">
+                <br>
+                <br>
 
+                <input class="Entradas" placeholder="Edad" type="number" name="edad" min="12" max="110">
+                <br>
+                <br>
 
+                <label class="Sexo1" for="Sexo">Sexo:</label>
+                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Masculino" name="sexo">Masculino </p>
+                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Femenino" name="sexo">Femenino</p>
+                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Otro" name="sexo">Otro</p>
+                    
+                    <br>
+                    <br>
+    
+                    <input class="Botones" type="submit" name="registro" value="Registrarse" />
 
+                <div id="FinalRegistro"> 
+                    
+    
+                    <label ><input type="checkbox" for="Formulario2"> Aceptar los <a href="https://policies.google.com/terms?hl=es-419" >Términos y Condiciones</a></label>
+                    <br>
+                    <br>
 
-            <section id="plataformas">
-                <h3>Puedes escucharme en:</h3>
-                <div class="contenedor">
-
-                    <div class="info-plataforma">
-                        <a href="">
-                            <img src="https://www.wallpapertip.com/wmimgs/17-176153_download-logo-spotify-png.png" alt="spotify">
-                            <h4>Spotify</h4>
-                        </a>
-                    </div>
-                    <div class="info-plataforma">
-                        <a href="">
-                            <img src="http://tusimagenesde.com/wp-content/uploads/2017/07/apple-logo-2.png" alt="apple music">
-                            <h4>Apple Music</h4>
-                        </a>
-                        
-                    </div>
-                    <div class="info-plataforma">
-                        <a href="">
-                            <img src="https://logos-marcas.com/wp-content/uploads/2021/03/Deezer-Logo.png" alt="Deezer">
-                            <h4>Deezer</h4>
-                        </a>
-                        
-                    </div>
-                    <div class="info-plataforma">
-                        <a href="">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Amazon_Music_logo.svg/1200px-Amazon_Music_logo.svg.png" alt="Amazon music">
-                            <h4>Amazon Music</h4></a>
-                    </div>
                 </div>
+           
+                
+            </form>
+        </div>
 
-            </section>
+    </section>
+    <section id="plataformas">
+        <h3>Puedes escucharme en:</h3>
+        <div class="contenedor">
 
-            <footer>
-                <div id="contenedor">
-                    <p class="copy">NaSeb1 &copy; 2021 <br>Pagina web Programada por Luciano Berrios. Video de fondo proporcionado por AyudaPanel </p>
-                    <div class="sociales">
-                        <a class="icon-youtube" href=""></a>
-                        <a class="icon-instagram-filled" href=""></a>
-                        <a class="icon-facebook-squared" href=""></a>
-            
+            <div class="info-plataforma">
+                <a href="">
+                    <img src="https://www.wallpapertip.com/wmimgs/17-176153_download-logo-spotify-png.png" alt="spotify">
+                    <h4>Spotify</h4>
+                </a>
+            </div>
+            <div class="info-plataforma">
+                <a href="">
+                    <img src="http://tusimagenesde.com/wp-content/uploads/2017/07/apple-logo-2.png" alt="apple music">
+                    <h4>Apple Music</h4>
+                </a>
+                
+            </div>
+            <div class="info-plataforma">
+                <a href="">
+                    <img src="https://logos-marcas.com/wp-content/uploads/2021/03/Deezer-Logo.png" alt="Deezer">
+                    <h4>Deezer</h4>
+                </a>
+                
+            </div>
+            <div class="info-plataforma">
+                <a href="">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Amazon_Music_logo.svg/1200px-Amazon_Music_logo.svg.png" alt="Amazon music">
+                    <h4>Amazon Music</h4></a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div id="contenedor">
+            <p class="copy">NaSeb1 &copy; 2021 <br>Pagina web Programada por Luciano Berrios. Video de fondo proporcionado por AyudaPanel </p>
+            <div class="sociales">
+                <a class="icon-youtube" href=""></a>
+                <a class="icon-instagram-filled" href=""></a>
+                <a class="icon-facebook-squared" href=""></a>
+    
 
 
-                    </div>
-                </div>
-            </footer>
+            </div>
+        </div>
+    </footer>
 
 
-        </main>
+    </main>
 
 
     </body>
