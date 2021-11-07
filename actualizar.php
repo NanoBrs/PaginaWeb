@@ -145,11 +145,11 @@
             while($row=mysqli_fetch_array($resultado)){
         ?>
         <div class="contenedor">
-            <form action="update.php" method="post"  id="Formulario2">
+            <form action="modificar.php" method="POST"  id="Formulario2">
                 
                 <h2>Modificar Datos</h2>
-
-                <input type="hidden" value="<?php  echo $row['nombre']?>" name="id" >
+                <input value="<?php  echo $row['id']?>" class="Entradas" id="id" type="hidden" name="id">
+    
                 <input value="<?php  echo $row['nombre']?>" class="Entradas" placeholder="Nombres" id="Nombre" type="text" name="nombre">
                 <br>
                 <br>

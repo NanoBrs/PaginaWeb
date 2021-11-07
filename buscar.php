@@ -2,7 +2,7 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM usuarios";
+  
 
 ?>
 
@@ -74,10 +74,21 @@
                     
                     <table class="table table-striped table-dark">
                         <thead>
+
+                          <?php 
+                            $busqueda= strtolower($_REQUEST['busqueda']);
+
+                            if (empty($busqueda))
+                            {
+                              header("location: UsuariosR.php");
+                            }
+                          
+                          ?>
+
                         <h2>¡Usuarios de nuestra comunidad!</h2>
                         <div class="container-sm mb-1" >
                           <form id="buscar" action="buscar.php" method="GET" class="form_search">
-                          <input type="text" name="busqueda" placeholder="Buscar">
+                          <input type="text" name="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
                           <input type="submit" value="Buscar" class="bton_search">
                           </form>
 
@@ -96,6 +107,17 @@
                         </thead>
                         <tbody>
                                 <?php
+                                  $sql="SELECT * FROM usuarios
+                                  WHERE 
+                                  (id LIKE '%$busqueda%' OR 
+                                  email LIKE '%$busqueda%' OR 
+                                  nombre LIKE '%$busqueda%' OR 
+                                  apellidos LIKE '%$busqueda%' OR 
+                                  rut LIKE '%$busqueda%' OR 
+                                  direccion LIKE '%$busqueda%' OR 
+                                  sexo LIKE '%$busqueda%' OR
+                                  edad LIKE '%$busqueda%' 
+                                  );";
                                     $resultado= mysqli_query($con,$sql);
                                     while($row=mysqli_fetch_array($resultado)){
                                 ?>
