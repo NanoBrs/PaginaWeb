@@ -60,20 +60,15 @@
     
 }
 
-#Contacto
-{
-    width: 350px;
-    height: 330px;
+#Contacto1
+{   
+    margin: 20px;
+    width: 500px;
+    height: 900px;
     min-width: 300px;
     border: solid 1px;
     border-radius: 12px;
     margin-bottom: 15px;
     background-color: var(--BgMain);
 
-}
-#Contacto .form-group
-{
-    width: 300px;
-
-    
 }

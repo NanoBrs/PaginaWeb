@@ -2,11 +2,13 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM usuarios";
-    $query=mysqli_query($con,$sql);
+    $id_contacto=$_GET['id_contacto'];
 
-    $row=mysqli_fetch_array($query);
+    $sql="SELECT * FROM contacto WHERE id_contacto='$id_contacto'";
+
 ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -141,63 +143,102 @@
      
 
 
-        </section>
+
     <section class="container"id="Registro">
+        <?php
+            $resultado= mysqli_query($con,$sql);
+            while($row=mysqli_fetch_array($resultado)){
+        ?>
         <div class="contenedor">
-            <form action="insertar.php" method="post"  id="Formulario2">
-                <h2>Crear cuenta nueva</h2>
-                <input  class="Entradas" placeholder="Nombres" id="Nombre" type="text" name="nombre">
+            <form action="modificarC.php" method="POST"  id="Formulario2">
+                
+                <h2>Modificar Datos: Solicitud de Contacto</h2>
+                
+                <input value="<?php  echo $row['id_contacto']?>" class="Entradas" id_contacto="id_contacto" type="hidden" name="id_contacto">
+    
+                <input value="<?php  echo $row['nombre']?>" class="Entradas" placeholder="Nombres" id="Nombre" type="text" name="nombre">
                 <br>
                 <br>
                 
-                <input class="Entradas" placeholder="Apellidos" id="Apellidos" type="text" name="apellidos">
+                <input value="<?php  echo $row['apellidos']?>" class="Entradas" placeholder="Apellidos" id="Apellidos" type="text" name="apellidos">
                 <br>
                 <br>
   
-                <input  class="Entradas" placeholder="RUT/DNI" id="Usuario" type="text" name="rut">
+                <input value="<?php  echo $row['rut']?>" class="Entradas" placeholder="RUT/DNI" id="Usuario" type="text" name="rut">
                 <br>
                 <br>
-                <input  class="Entradas" placeholder="Correo Electronico" type="email" name="email">
+                <input value="<?php  echo $row['email']?>" class="Entradas" placeholder="Correo Electronico" type="email" name="email">
                 <br>
                 <br>
-                <input class="Entradas" placeholder="Contraseña" type="password" name="contraseña">
+                <label value="<?php  echo $row['Motivo']?>" class="Sexo1" for="Motivo">Motivo:</label> 
+                    <?php if ( $row['Motivo']=='Demanda Civil') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Demanda Civil" name="Motivo" checked>Demanda Civil </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Demanda Civil" name="Motivo">Demanda Civil </p>
+                    <?php } ?>
+
+                   
+                    
+                    <?php if ( $row['Motivo']=='Colaboración Musical') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Colaboración Musical" name="Motivo" checked>Colaboración Musical </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Colaboración Musical" name="Motivo">Colaboración Musical </p>
+                    <?php } ?>
+
+                    <?php if ( $row['Motivo']=='Otros') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otros" name="Motivo" checked>Otros </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otros" name="Motivo">Otros </p>
+                    <?php } ?>
                 <br>
                 <br>
-                <input class="Entradas"  type="text" name="direccion" placeholder="Dirección">
+                <input value="<?php  echo $row['direccion']?>" class="Entradas"  type="text" name="direccion" placeholder="Dirección">
                 <br>
                 <br>
 
  
-                <input id="FechaNacimiento" type="date" value="FechaN" name="fecha_nac">
+                <input value="<?php  echo $row['fecha_nac']?>" id="FechaNacimiento" type="date" value="FechaN" name="fecha_nac">
                 <br>
                 <br>
 
-                <input class="Entradas" placeholder="Edad" type="number" name="edad" min="12" max="110">
+                <input value="<?php  echo $row['edad']?>" class="Entradas" placeholder="Edad" type="number" name="edad" min="12" max="110">
                 <br>
                 <br>
 
-                <label class="Sexo1" for="Sexo">Sexo:</label>
-                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Masculino" name="sexo">Masculino </p>
-                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Femenino" name="sexo">Femenino</p>
-                    <p class="Sexo2"><input  type="radio" id="Sexo" value="Otro" name="sexo">Otro</p>
+                <label value="<?php  echo $row['sexo']?>" class="Sexo1" for="Sexo">Sexo:</label> 
+                    <?php if ( $row['sexo']=='Masculino') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Masculino" name="sexo" checked>Masculino </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Masculino" name="sexo">Masculino </p>
+                    <?php } ?>
+
+                   
                     
+                    <?php if ( $row['sexo']=='Femenino') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Femenino" name="sexo" checked>Femenino </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Femenino" name="sexo">Femenino </p>
+                    <?php } ?>
+
+                    <?php if ( $row['sexo']=='Otro') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otro" name="sexo" checked>Otro </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otro" name="sexo">Otro </p>
+                    <?php } ?>
+
                     <br>
                     <br>
     
-                    <input class="Botones" type="submit" name="registro" value="Registrarse" />
+                    <input class="Botones" type="submit" name="registro" value="Modificar" />
 
-                <div id="FinalRegistro"> 
-                    
-    
-                    <label ><input type="checkbox" for="Formulario2"> Aceptar los <a href="https://policies.google.com/terms?hl=es-419" >Términos y Condiciones</a></label>
-                    <br>
-                    <br>
-
-                </div>
+               
            
                 
             </form>
         </div>
+        <?php 
+            }
+        ?>
 
     </section>
     <section id="plataformas">

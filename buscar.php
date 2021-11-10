@@ -2,8 +2,8 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT *  FROM usuarios";
-    $sql2="SELECT *  FROM contacto";
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +66,11 @@
         </header>  
 
        
-      
+        <div class="container-md mt-5">
+        <div class="row">
+            
+
+        </div>
 
         <div class="row">
             
@@ -75,10 +79,21 @@
                     
                     <table class="table table-striped table-dark">
                         <thead>
+
+                          <?php 
+                            $busqueda= strtolower($_REQUEST['busqueda']);
+
+                            if (empty($busqueda))
+                            {
+                              header("location: UsuariosR.php");
+                            }
+                          
+                          ?>
+
                         <h2>¡Usuarios de nuestra comunidad!</h2>
                         <div class="container-sm mb-1" >
                           <form id="buscar" action="buscar.php" method="GET" class="form_search">
-                          <input type="text" name="busqueda" placeholder="Buscar">
+                          <input type="text" name="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
                           <input type="submit" value="Buscar" class="bton_search">
                           </form>
 
@@ -97,6 +112,17 @@
                         </thead>
                         <tbody>
                                 <?php
+                                  $sql="SELECT * FROM usuarios
+                                  WHERE 
+                                  (id LIKE '%$busqueda%' OR 
+                                  email LIKE '%$busqueda%' OR 
+                                  nombre LIKE '%$busqueda%' OR 
+                                  apellidos LIKE '%$busqueda%' OR 
+                                  rut LIKE '%$busqueda%' OR 
+                                  direccion LIKE '%$busqueda%' OR 
+                                  sexo LIKE '%$busqueda%' OR
+                                  edad LIKE '%$busqueda%' 
+                                  );";
                                     $resultado= mysqli_query($con,$sql);
                                     while($row=mysqli_fetch_array($resultado)){
                                 ?>
@@ -119,69 +145,10 @@
                 </div>
             </div>
 
-            <div class="row">
-            
-            <div class="col-12 mt-1">
-                <div class="container-md mt-1">
-                    
-                    <table class="table table-striped table-dark">
-                        <thead>
-                        <h2>Solicitudes de Contacto</h2>
-                        <div class="container-sm mb-2" >
-                          <form id="buscar" action="buscarC.php" method="GET" class="form_search">
-                          <input type="text" name="busqueda" placeholder="Buscar">
-                          <input type="submit" value="Buscar" class="bton_search">
-                          </form>
 
-                        </div>
-                        
-                        <tr> 
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellidos</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Sexo</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Fecha Nac</th> 
-                            <th scope="col">Dirección</th> 
-                            <th scope="col">RUT/DNI</th> 
-                            <th scope="col">Motivo</th> 
-                            <th scope="col">Operaciones</th> 
-                           
-                        </tr>
-                        
-                        </thead>
-                        <tbody>
-                                <?php
-                                    $resultado2= mysqli_query($con,$sql2);
-                                    while($row=mysqli_fetch_array($resultado2)){
-                                ?>
-                                    <tr>
-                                        <td><?php  echo $row['nombre']?></td>
-                                        <td><?php  echo $row['apellidos']?></td>
-                                        <td><?php  echo $row['edad']?></td>
-                                        <td><?php  echo $row['sexo']?></td>    
-                                        <td><?php  echo $row['email']?></td>  
-                                        <td><?php  echo $row['fecha_nac']?></td>
-                                        <td><?php  echo $row['direccion']?></td>
-                                        <td><?php  echo $row['rut']?></td>
-                                        <td><?php  echo $row['Motivo']?></td>
-                                        <th><a href="actualizarC.php?id_contacto=<?php echo $row['id_contacto'] ?>" class="btn btn-info">Modificar</a>
-                                        <a href="deleteC.php?id_contacto=<?php echo $row['id_contacto'] ?>" class="btn btn-danger">Eliminar</a>
-                                        </th>
-                                <?php 
-                                    }
-                                ?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-
-
-          </div>
-      </div>
-      <section id="plataformas">
+        </div>
+    </div>
+    <section id="plataformas">
                 <h3>Puedes escucharme en:</h3>
                 <div class="contenedor">
 
