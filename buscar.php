@@ -38,27 +38,32 @@
                   <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                       <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="QuienSoy.html">¿Quien soy?</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="login.php">Iniciar sesión</a>
-                      </li>
+ 
                       <li class="nav-item">
                         <a class="nav-link" href="Comentarios.html">Dejar un comentario</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="UsuariosR.php">Comunidad</a>
+                        <a class="nav-link" href="UsuariosR.php">Administración</a>
                       </li>
                     </ul>
+                    <div class=" border">
+                        <a class="nav-link " href="login.php">Iniciar sesión </a>
+                    </div>
+                        
+                    
+                        
+                    
                   </div>
                 </div>
               </nav>
   
 
-        </header>   
+        </header>  
 
        
         <div class="container-md mt-5">
@@ -143,6 +148,51 @@
 
         </div>
     </div>
+    <section id="plataformas">
+                <h3>Puedes escucharme en:</h3>
+                <div class="contenedor">
+
+                    <div class="info-plataforma">
+                        <a href="">
+                            <img src="https://www.wallpapertip.com/wmimgs/17-176153_download-logo-spotify-png.png" alt="spotify">
+                            <h4>Spotify</h4>
+                        </a>
+                    </div>
+                    <div class="info-plataforma">
+                        <a href="">
+                            <img src="http://tusimagenesde.com/wp-content/uploads/2017/07/apple-logo-2.png" alt="apple music">
+                            <h4>Apple Music</h4>
+                        </a>
+                        
+                    </div>
+                    <div class="info-plataforma">
+                        <a href="">
+                            <img src="https://logos-marcas.com/wp-content/uploads/2021/03/Deezer-Logo.png" alt="Deezer">
+                            <h4>Deezer</h4>
+                        </a>
+                        
+                    </div>
+                    <div class="info-plataforma">
+                        <a href="">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Amazon_Music_logo.svg/1200px-Amazon_Music_logo.svg.png" alt="Amazon music">
+                            <h4>Amazon Music</h4></a>
+                    </div>
+                </div>
+
+      </section>
+      <footer>
+          <div id="contenedor">
+              <p class="copy">NaSeb1 V.1 &copy; 2021 <br>Pagina web Programada por Luciano Berrios . Video de fondo proporcionado por AyudaPanel </p>
+              <div class="sociales">
+                  <a class="icon-youtube" href=""></a>
+                  <a class="icon-instagram-filled" href=""></a>
+                  <a class="icon-facebook-squared" href=""></a>
+      
+
+
+              </div>
+          </div>
+      </footer>
     
 </body>
 </html>

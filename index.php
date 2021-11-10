@@ -1,3 +1,13 @@
+<?php 
+    include("conexion.php");
+    $con=conectar();
+
+    $sql="SELECT *  FROM usuarios";
+    $query=mysqli_query($con,$sql);
+
+    $row=mysqli_fetch_array($query);
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -101,27 +111,32 @@
                   <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                       <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="QuienSoy.html">¿Quien soy?</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="login.php">Iniciar sesión</a>
-                      </li>
+ 
                       <li class="nav-item">
                         <a class="nav-link" href="Comentarios.html">Dejar un comentario</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="UsuariosR.php">Comunidad</a>
+                        <a class="nav-link" href="UsuariosR.php">Administración</a>
                       </li>
                     </ul>
+                    <div class=" border">
+                        <a class="nav-link " href="login.php">Iniciar sesión </a>
+                    </div>
+                        
+                    
+                        
+                    
                   </div>
                 </div>
               </nav>
   
 
-        </header>
+        </header> 
     
         
         <main>
@@ -251,32 +266,57 @@
 
             </div>
             
-            <div id="Contacto" class="container" >
-                <form >
+            <div id="Contacto" class="container-sm mb-4 p-5 rounded-3" style="background-color: var(--BgMain);" >
+                <form action="InsertarC.php" method="post">
                     <h2>Contacto rapido</h2>
                     <div class="form-group">
-                      <label class="text-white" for="exampleInputEmail1">Nombre Artistico</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su nombre y apellido">
+                      <label class="text-white" for="exampleInputEmail1">Nombre</label>
+                      <input name="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su nombre">
                     </div>
-
+                    <div class="form-group ">
+                        <label class="text-white" for="exampleInputEmail1">Apellidos</label>
+                        <input name="apellidos" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su apellido">
+                      </div>
+                    <div class="form-group ">
+                        <label class="text-white" for="exampleInputEmail1">RUT/DNI</label>
+                        <input name="rut" type="num" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese RUT/DNI">
+                      </div>
                     <div class="form-group ">
                         <label class="text-white" for="exampleInputEmail1">Correo Electronico</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese correo">
-                      </div>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su correo electronico">
+                    </div>
+                    <div class="form-group ">
+                        <label class="text-white" for="exampleInputEmail1">Dirección</label>
+                        <input name="direccion" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese dirección">
+                    </div>
+                    <div class="form-group ">
+                        <label class="text-white" for="Sexo">Sexo:</label>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Masculino" name="sexo">Masculino </p>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Femenino" name="sexo">Femenino</p>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otro" name="sexo">Otro</p>
+                    </div>
+                    
+                    <div class="form-group ">
+                        <label class="text-white" for="exampleInputEmail1">Fecha de Nacimiento</label>
+                        <input name="fecha_nac" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese correo">
+                    </div>
+                    
+                    <div class="form-group m-2">
+                        <label class="text-white" for="exampleInputEmail1">Edad: </label>
+                        <input class="Entradas" placeholder="Edad" type="number" name="edad" min="12" max="110">
+                    </div>
                     <div class="form-group pb-2">
                         <label class="text-white" for="exampleInputEmail1">Motivo</label>
-                        <select class="form-control ">
-                            <option>Seleccione una opcion</option>
-                            <option>Demanda Civil</option>
+                        <select name="Motivo" class="form-control ">
+                            <option name="Motivo" value="Demanda Civil">Demanda Civil</option>
                             
-                            <option>Colaboración Musical</option>
+                            <option name="Motivo" value="Colaboración Musical">Colaboración Musical</option>
 
-                            <option>Otros </option>
+                            <option name="Motivo" value="Otros">Otros </option>
                           </select>
                       </div>
-                    
-                
-                    <button type="submit" class="btn btn-secondary">Enviar</button>
+        
+                    <button type="submit" class="btn m-2 btn-secondary">Enviar</button>
                   </form>
             </div>
             

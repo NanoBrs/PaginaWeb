@@ -110,27 +110,32 @@
                   <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                       <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="index.php">Inicio</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="QuienSoy.html">¿Quien soy?</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="login.php">Iniciar sesión</a>
-                      </li>
+ 
                       <li class="nav-item">
                         <a class="nav-link" href="Comentarios.html">Dejar un comentario</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="UsuariosR.php">Comunidad</a>
+                        <a class="nav-link" href="UsuariosR.php">Administración</a>
                       </li>
                     </ul>
+                    <div class=" border">
+                        <a class="nav-link " href="login.php">Iniciar sesión </a>
+                    </div>
+                        
+                    
+                        
+                    
                   </div>
                 </div>
               </nav>
   
 
-        </header>
+        </header> 
         
     <main>
      

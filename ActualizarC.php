@@ -2,9 +2,9 @@
     include("conexion.php");
     $con=conectar();
 
-    $id=$_GET['id'];
+    $id_contacto=$_GET['id_contacto'];
 
-    $sql="SELECT * FROM usuarios WHERE id='$id'";
+    $sql="SELECT * FROM contacto WHERE id_contacto='$id_contacto'";
 
 ?>
 
@@ -150,10 +150,11 @@
             while($row=mysqli_fetch_array($resultado)){
         ?>
         <div class="contenedor">
-            <form action="modificar.php" method="POST"  id="Formulario2">
+            <form action="modificarC.php" method="POST"  id="Formulario2">
                 
-                <h2>Modificar Datos</h2>
-                <input value="<?php  echo $row['id']?>" class="Entradas" id="id" type="hidden" name="id">
+                <h2>Modificar Datos: Solicitud de Contacto</h2>
+                
+                <input value="<?php  echo $row['id_contacto']?>" class="Entradas" id_contacto="id_contacto" type="hidden" name="id_contacto">
     
                 <input value="<?php  echo $row['nombre']?>" class="Entradas" placeholder="Nombres" id="Nombre" type="text" name="nombre">
                 <br>
@@ -169,7 +170,26 @@
                 <input value="<?php  echo $row['email']?>" class="Entradas" placeholder="Correo Electronico" type="email" name="email">
                 <br>
                 <br>
-                <input value="<?php  echo $row['contraseña']?>" class="Entradas" placeholder="Contraseña" type="password" name="contraseña">
+                <label value="<?php  echo $row['Motivo']?>" class="Sexo1" for="Motivo">Motivo:</label> 
+                    <?php if ( $row['Motivo']=='Demanda Civil') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Demanda Civil" name="Motivo" checked>Demanda Civil </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Demanda Civil" name="Motivo">Demanda Civil </p>
+                    <?php } ?>
+
+                   
+                    
+                    <?php if ( $row['Motivo']=='Colaboración Musical') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Colaboración Musical" name="Motivo" checked>Colaboración Musical </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Motivo" value="Colaboración Musical" name="Motivo">Colaboración Musical </p>
+                    <?php } ?>
+
+                    <?php if ( $row['Motivo']=='Otros') { ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otros" name="Motivo" checked>Otros </p>
+                    <?php } else{ ?>
+                        <p class="Sexo2"><input  type="radio" id="Sexo" value="Otros" name="Motivo">Otros </p>
+                    <?php } ?>
                 <br>
                 <br>
                 <input value="<?php  echo $row['direccion']?>" class="Entradas"  type="text" name="direccion" placeholder="Dirección">

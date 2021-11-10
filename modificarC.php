@@ -2,9 +2,9 @@
     include("conexion.php");
     $con=conectar();
     
-    $id=$_POST['id'];
+    $id_contacto=$_POST['id_contacto'];
     $email=$_POST['email'];
-    $contraseña=$_POST['contraseña'];
+    $Motivo=$_POST['Motivo'];
     $nombre=$_POST['nombre'];
     $apellidos=$_POST['apellidos'];
     $rut=$_POST['rut'];
@@ -13,8 +13,8 @@
     $fecha_nac=$_POST['fecha_nac'];
     $edad=$_POST['edad'];
     
-    $sql="UPDATE usuarios SET email ='$email', contraseña='$contraseña', nombre='$nombre', apellidos='$apellidos',
-    rut='$rut', direccion='$direccion', sexo='$sexo', fecha_nac='$fecha_nac', edad='$edad' WHERE id='$id' ";
+    $sql="UPDATE contacto SET email ='$email', Motivo='$Motivo', nombre='$nombre', apellidos='$apellidos',
+    rut='$rut', direccion='$direccion', sexo='$sexo', fecha_nac='$fecha_nac', edad='$edad' WHERE id_contacto='$id_contacto' ";
     
     $query= mysqli_query($con,$sql);
 
